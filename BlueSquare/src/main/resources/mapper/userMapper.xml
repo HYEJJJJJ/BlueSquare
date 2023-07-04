@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- mapper의 전체경로 -->
+<mapper namespace="com.bluesquare.app.user.dao.UserMapper">
+
+<!-- sql문 작성하기 -->
+<!-- 회원가입하기 -->
+<insert id="sign" parameterType="UserDTO">
+	INSERT INTO BLUE_USER(ID, PW, NAME, BIRTH, EMAIL, ADDRESS)
+	VALUES (#{id}, #{pw}, #{name}, #{birth}, #{email}, #{address})
+</insert>
+
+<!-- 아이디 중복 체크 -->
+<select id="idOverlap" resultType="int">
+	SELECT COUNT(*)
+	FROM BLUE_USER
+	WHERE ID=#{id}
+</select>
+
+<!-- 로그인 확인하기 -->
+<select id="login" parameterType="map" resultType="UserDTO">
+	SELECT ID, PW
+	FROM BLUE_USER
+	WHERE ID=#{id} and PW=#{pw}
+</select>
+</mapper>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- mapper의 전체경로 -->
+<mapper namespace="com.bluesquare.app.TicketMapper">
+	
+	<!-- 티켓 예매하기 -->
+	<insert id="ticketing" parameterType="TicketDto">
+		INSERT INTO TICKETING (TNO, ID, SNO, SEAT)
+   		VALUES (seq_ticketing.NEXTVAL, #{id}, #{sno}, #{seat})
+	</insert>
+	
+	<!-- 공연 목록 가져오기 -->
+	<select id="performList" resultType="com.bluesquare.app.domain.PerformDto">
+		SELECT PNO, TITLE, STARTDAY, ENDDAY, RUNTIME, ACTORS, PRICE
+		FROM PERFORMANCE
+	</select>
+	
+	<!-- 공연 이미지 목록 가져오기 -->
+	<select id="performImgList" resultType="com.bluesquare.app.domain.PerformImgDto">
+		SELECT INO, PNO, NAME, ORI_NAME, URL
+		FROM PERFORM_IMG
+	</select>
+	
+	<!-- 특정 공연의 일정 목록 가져오기 -->
+	<select id="scheduleList" parameterType="int" resultType="com.bluesquare.app.domain.ScheduleDto">
+		SELECT SNO, PNO, TIMETABLE
+		FROM PERFORM_SCHEDULE
+		WHERE PNO = #{pno}
+		ORDER BY TIMETABLE
+	</select>
+	
+	<!-- 특정 공연 일정의 예매된 좌석 목록 가져오기 -->
+	<select id="reserved" parameterType="int" resultType="int">
+		SELECT SEAT FROM TICKETING WHERE SNO = #{sno} ORDER BY SEAT
+	</select>
+	
+	<!-- 특정 공연의 상세 정보 가져오기(dto) -->
+	<select id="performDetail" parameterType="int" resultType="com.bluesquare.app.domain.PerformDto">
+		SELECT PNO, TITLE, STARTDAY, ENDDAY, RUNTIME, ACTORS, PRICE
+		FROM PERFORMANCE
+		WHERE PNO = #{pno}
+	</select>
+	
+	<!-- 예매한 티켓 목록 가져오기 -->
+	
+	<select id="ticketingList" parameterType="String" resultType="com.bluesquare.app.domain.TicketingJoinDto">
+		SELECT *
+		FROM TICKETING NATURAL JOIN PERFORM_SCHEDULE NATURAL JOIN PERFORMANCE
+		WHERE ID = #{id}
+		ORDER BY TKT_DATE DESC
+	</select>
+	
+	<!-- 특정 티켓 상세 보기 -->
+	<select id="ticketingInfo" parameterType="int" resultType="com.bluesquare.app.domain.TicketingJoinDto">
+		SELECT *
+		FROM TICKETING NATURAL JOIN PERFORM_SCHEDULE NATURAL JOIN PERFORMANCE
+		WHERE TNO = #{tno}
+	</select>
+	
+	<!-- 예매 취소 -->
+	<delete id="ticketCancle" parameterType="int">
+		DELETE TICKETING WHERE TNO = #{tno}
+	</delete>
+</mapper>

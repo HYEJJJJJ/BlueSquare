@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- mapper의 전체경로 -->
+<mapper namespace="com.bluesquare.app.MainMapper">
+
+	<!-- 공연 등록 -->
+	<select id="mainPerformList" resultType="com.bluesquare.app.domain.MainPerformDto">
+		SELECT PNO, TITLE, STARTDAY, ENDDAY, RUNTIME, ACTORS, PRICE, INO, NAME, ORI_NAME, URL
+		FROM PERFORMANCE NATURAL JOIN PERFORM_IMG
+	</select>
+	
+	<!-- 공연조회 -->
+	<select id="select" resultType="com.bluesquare.app.domain.MainPerformDto">
+		SELECT PNO, TITLE, STARTDAY, ENDDAY, RUNTIME, ACTORS, PRICE, INO, NAME, ORI_NAME, URL
+		FROM PERFORMANCE NATURAL JOIN PERFORM_IMG
+		WHERE PNO = #{pno}
+	</select>
+
+</mapper>

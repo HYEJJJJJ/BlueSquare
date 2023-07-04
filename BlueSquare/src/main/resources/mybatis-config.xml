@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="cacheEnabled" value="false"/>
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+	
+	
+	<typeAliases>
+		<typeAlias alias="TicketDto" type="com.bluesquare.app.domain.TicketDto" />
+		<typeAlias alias="UserDTO" type="com.bluesquare.app.user.domain.UserDTO" />
+		<typeAlias alias="BoardDto" type="com.bluesquare.app.board.domain.BoardDto" />
+		<typeAlias alias="NoticeBoardDto" type="com.bluesquare.app.notice.dto.NoticeBoardDto" />
+		<typeAlias alias="SearchCondition" type="com.bluesquare.app.board.domain.SearchCondition" />
+		<typeAlias alias="CommentsDto" type="com.bluesquare.app.board.domain.CommentsDto" />
+	</typeAliases>
+	
+
+
+</configuration>

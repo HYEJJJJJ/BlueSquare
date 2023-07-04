@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+.wrap {
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.mainContents {
+    display: grid;
+    justify-items: center;
+
+}
+
+.content {
+    display: grid;
+    justify-items: center;
+
+    position: relative;
+    width: 665px;
+}
+
+.content .location {
+    position: absolute;
+    top : 0;
+    right : 0;
+    margin-bottom: 20px;
+}
+
+.title {
+    justify-content: center;
+    display: flex;
+    margin-top: 13px;
+    margin-bottom: 20px;
+}

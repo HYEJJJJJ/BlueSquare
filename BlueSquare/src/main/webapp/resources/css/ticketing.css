@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+.wrap {
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.mainContents {
+    display: grid;
+    justify-items: center;
+
+}
+
+.content {
+    display: grid;
+    justify-items: center;
+    position: relative;
+}
+
+#ticketingBox{
+	display: flex;
+	width: 990px;
+	margin: 0 auto;
+}
+#ticketingBox h3{
+	text-align: center;
+	color: #FFF;
+	background: rgb(51, 151, 210);
+}
+#ticketingBox>div{
+	border: rgb(178, 178, 178) solid 1px;
+	width: 300px;
+	height: 450px;
+}
+
+.performN, .scheduleN{
+	cursor:pointer;
+}
+#performList li{
+	margin-bottom: 15px;
+}
+#scheduleList li{
+	margin-bottom: 8px;
+}

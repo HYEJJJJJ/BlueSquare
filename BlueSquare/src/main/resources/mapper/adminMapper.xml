@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- mapper의 전체경로 -->
+<mapper namespace="com.bluesquare.app.AdminMapper">
+
+	<!-- 공연 등록 -->
+	<insert id="performReg" parameterType="com.bluesquare.app.domain.PerformDto">
+		INSERT INTO PERFORMANCE (PNO, TITLE, STARTDAY, ENDDAY, RUNTIME, ACTORS, PRICE)
+    	VALUES (seq_perform.NEXTVAL, #{title}, #{startday}, #{endday}, #{runtime}, #{actors}, #{price})
+	</insert>
+
+	<!-- 공연 이미지 등록 -->
+	<insert id="performImgReg" parameterType="com.bluesquare.app.domain.PerformImgDto">
+		INSERT INTO PERFORM_IMG (INO, NAME, ORI_NAME, URL, PNO)
+		VALUES (seq_img.NEXTVAL, #{name}, #{ori_name}, #{url}, (SELECT MAX(pno) FROM performance))
+	</insert>
+	
+	<!-- 공연 정보 수정 -->
+	<update id="performEdit" parameterType="com.bluesquare.app.domain.PerformDto">
+		UPDATE PERFORMANCE
+		SET title = #{title}, startday = #{startday}, endday = #{endday}, runtime = #{runtime}, actors = #{actors}, price = #{price}
+		WHERE pno = #{pno}
+	</update>
+
+	<!-- 공연 삭제 -->
+	<delete id="performDel" parameterType="int">
+		DELETE FROM PERFORMANCE WHERE PNO = #{pno}
+	</delete>
+
+	<!-- 공연 스케쥴 추가 -->
+	<insert id="performScheReg" parameterType="com.bluesquare.app.domain.ScheduleDto">
+		INSERT INTO PERFORM_SCHEDULE (SNO, PNO, TIMETABLE)
+    	VALUES (seq_schedule.NEXTVAL, #{pno}, #{timetable})
+	</insert>
+
+</mapper>

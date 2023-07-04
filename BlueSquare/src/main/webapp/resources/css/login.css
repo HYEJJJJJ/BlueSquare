@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+	ul{list-style: none;}
+	#container{
+		width: 500px;
+		margin: 75px auto;
+	}
+	
+	fieldset {
+		border: 2px solid #0397d6;
+		padding: 20px;
+	}
+	
+	fieldset>legend {
+		font-weight: bold;
+		font-size: 20px;
+		background-color: #0397d6;
+		color: white;
+		padding: 0 10px;
+	}
+	
+	button {
+		border: 1px solid #0279ab;
+        border-radius: 5px;
+       
+		font-size: 13px;
+		background-color: #0397d6;
+		color: white;
+		padding: 5px;
+	}
+	
+	button:hover {
+		background-color: #0279ab;
+	}
+	
+	#chkBtn {
+		width: 330px;
+		height: 40px;
+		margin: 0 25px;
+		font-size: 15px;
+	}
+	
+	
+	input[type='text'], input[type='password'] {
+        width: 200px;
+        height: 30px;
+        border : 1px solid gray;
+     
+        padding: 0 10px;
+        margin-bottom: 10px; 
+   }
+	
+    ul {
+   		margin-bottom: 20px;
+   }
+   
+    ul label {
+   		display: inline-block;
+   		width: 100px;
+   }
+   
+   #msg {
+        height: 20px;
+        text-align:center;
+        font-size:14px;
+        color:red;
+        margin-bottom: 20px;
+    }
